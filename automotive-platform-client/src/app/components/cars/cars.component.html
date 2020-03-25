@@ -1,0 +1,16 @@
+<p>cars works!</p>
+<button (click)="onClick()">GetCarsFrom</button>
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Year</th>
+        <th>Description</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let car of cars">
+            <td>{{car.name}}</td>
+            <td>{{car.year}}</td>
+            <td>{{car.description}}</td>
+        </tr>
+    </tbody>
+</table>
