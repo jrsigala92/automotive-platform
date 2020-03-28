@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { CarsService } from '../../services/cars.service';
+import { CarsService } from '../../cars.service';
 
 @Component({
-  selector: 'app-cars',
-  templateUrl: './cars.component.html',
-  styleUrls: ['./cars.component.css']
+  selector: 'app-cars-index',
+  templateUrl: './cars-index.component.html',
+  styleUrls: ['./cars-index.component.css']
 })
-export class CarsComponent implements OnInit {
+export class CarsIndexComponent implements OnInit {
   cars: Array<any>;
   constructor(private carsService: CarsService) { }
 
   ngOnInit(): void {
     this.cars = [];
+    this.onGetCars();
   }
 
   onGetCars() {

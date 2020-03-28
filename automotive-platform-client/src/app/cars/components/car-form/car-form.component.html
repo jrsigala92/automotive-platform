@@ -1,0 +1,16 @@
+<span class="ui-float-label">
+    <input id="float-input" type="text" pInputText [(ngModel)]="car.name"> 
+    <label for="float-input">Name</label>
+</span>
+<span class="ui-float-label">
+    <input id="float-input" type="number" pInputText [(ngModel)]="car.year"> 
+    <label for="float-input">Year</label>
+</span>
+<span class="ui-float-label">
+    <input id="float-input" type="text" pInputText [(ngModel)]="car.description"> 
+    <label for="float-input">Description</label>
+</span>
+<!-- <input type="text" pInputText [(ngModel)]="car.name" />
+<input type="text" pInputText [(ngModel)]="car.year" />
+<input type="text" pInputText [(ngModel)]="car.description" /> -->
+<button (click)="onCreate()">Go</button>
