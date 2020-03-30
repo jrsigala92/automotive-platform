@@ -10,13 +10,15 @@
                         <th>Name</th>
                         <th>Year</th>
                         <th>Description</th>
+                        <th></th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-car>
                     <tr>
-                        <td>{{car.name}}</td>
+                        <td [routerLink]="['/cars/car-form/', car._id]">{{car.name}}</td>
                         <td>{{car.year}}</td>
                         <td>{{car.description}}</td>
+                        <td><button class="btn btn-secondary" (click)="onDeleteCar(car._id)">Delete</button></td>
                     </tr>
                 </ng-template>
             </p-table>

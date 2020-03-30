@@ -8,7 +8,7 @@ export class CarsService {
     constructor(
         @Inject('CAR_MODEL')
         private carModel: Model<Car>,
-    ){ }
+    ) { }
 
     private readonly cars: any[] = [];
 
@@ -22,10 +22,19 @@ export class CarsService {
         return this.carModel.find().exec();
     }
 
-    testCars() {
-        this.cars.push({name: 'Seat Ibiza', year: 2018, description: 'little big monster'});
-        this.cars.push({name: 'Mazda 3', year: 2018, description: 'little big monster'});
-        this.cars.push({name: 'Volkswagen Gol', year: 2018, description: 'little big monster'});
+    async findById(id): Promise<Car> {
+        return this.carModel.findById(id).exec();
+    }
+    
+    async updateCar(id, createCarDTO: CreateCarDto): Promise<Car> {
+        const updatedCar = await this.carModel
+            .findByIdAndUpdate(id, createCarDTO, { new: true });
+        return updatedCar;
+    }
+    
+    async deleteCar(id): Promise<any> {
+        const deletedCar = await this.carModel.findByIdAndDelete(id);
+        return deletedCar;
     }
 }
 

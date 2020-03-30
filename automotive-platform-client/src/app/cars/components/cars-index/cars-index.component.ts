@@ -17,11 +17,14 @@ export class CarsIndexComponent implements OnInit {
 
   onGetCars() {
     this.carsService.getCars().subscribe(res => {
+      console.log(res);
       this.cars = res;
     });
   }
 
-  onClick() {
+  onDeleteCar(id: string) {
+    console.log(id);
+    this.carsService.deleteCar(id).subscribe();
     this.onGetCars();
   }
 
