@@ -26,8 +26,9 @@ export class CarsService {
     return this.httpClient.post('http://localhost:3000/cars/create', car);
   }
 
-  updateCar(id: string, car: Car): Observable<any> {
-    return this.httpClient.put('http://localhost:3000/cars/update/' + id, car);
+  updateCar(id, car: Car): Observable<any> {
+    console.log(car);
+    return this.httpClient.put('http://localhost:3000/cars/update/' + id, {name: car.name, year: car.year, description: car.description});
   }
 
   deleteCar(id: string): Observable<any> {

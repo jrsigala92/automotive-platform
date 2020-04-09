@@ -30,19 +30,26 @@ export class CarFormComponent implements OnInit {
     this.router.navigateByUrl('cars/cars-index');
   }
 
-  onGetCar(id: string) {
+  onUpdate() {
+    console.log(this.car);
+    this.carsService.updateCar(this.carId, this.car).subscribe();
+    this.car = new Car();
+    this.router.navigateByUrl('cars/cars-index');
+  }
+
+  async onGetCar(id: string) {
     if (this.carId) {
-      this.carsService.getCar(id).toPromise().then(res => {
-        console.log(res.data);
+      await this.carsService.getCar(id).toPromise().then(res => {
         this.car = res as Car;
       }).catch(error =>
         console.log(error));
     }
+    console.log(this.car);
   }
 
-  onUpdate(id: string) {
-    this.carsService.updateCar(id, this.car);
-    this.car = new Car();
-    this.router.navigateByUrl('cars/cars-index');
-  }
+  // onUpdate(id: string) {
+  //   this.carsService.updateCar(id, this.car);
+  //   this.car = new Car();
+  //   this.router.navigateByUrl('cars/cars-index');
+  // }
 }

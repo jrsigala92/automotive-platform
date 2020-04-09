@@ -1,14 +1,16 @@
 import { Controller, Get, Post, Res, Body, HttpStatus, Param, Put, Delete, Query, NotFoundException } from '@nestjs/common';
-import { Car } from './interfaces/car.interface';
 import { CarsService } from './cars.service';
-import { CreateCarDto } from './dto/create.-car.dto';
+import { Car } from './models/car.model';
+import { CarViewModel } from './view-models/car.viewmodel';
 
 @Controller('cars')
 export class CarsController {
-  constructor(private carService: CarsService) { }
+  constructor(private readonly carService: CarsService) { }
 
   @Post('/create')
-  async addCar(@Res() res, @Body() createCarDTO: CreateCarDto) {
+  async addCar(@Res() res, @Body() createCarDTO: Car) {
+    console.log(createCarDTO);
+    // let carToCreate = new Car(createCarDTO);
     const car = await this.carService.create(createCarDTO);
     return res.status(HttpStatus.OK).json({
       message: "Car has been created successfully",
@@ -21,13 +23,15 @@ export class CarsController {
     return this.carService.findById(id);
   }
   @Get()
-  async findAll(): Promise<Car[]> {
+  async findAll(): Promise<CarViewModel[]> {
     return this.carService.findAll();
   }
 
-  @Put('/update')
-  async updateCar(@Res() res, @Query('id') id, @Body() createCarDTO: CreateCarDto) {
-    const car = await this.carService.updateCar(id, createCarDTO);
+  @Put('/update/:id')
+  async updateCar(@Res() res, @Param('id') id, @Body() createCarDTO: Car) {
+    console.log('controller update');
+    console.log(createCarDTO);
+    const car = await this.carService.updateAsync(id, createCarDTO);
     if (!car) throw new NotFoundException('Car does not exist!');
     return res.status(HttpStatus.OK).json({
       message: 'Car has been successfully updated',
@@ -37,7 +41,7 @@ export class CarsController {
 
   @Delete('/delete/:id')
   async deleteCar(@Res() res, @Param('id') id) {
-    const car = await this.carService.deleteCar(id);
+    const car = await this.carService.delete(id);
     if (!car) throw new NotFoundException('Car does not exist');
     return res.status(HttpStatus.OK).json({
       message: 'Car has been deleted',

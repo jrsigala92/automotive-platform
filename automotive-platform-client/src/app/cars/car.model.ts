@@ -1,10 +1,11 @@
 export class Car {
-    _id: string;
+    id: object;
     name: string;
     year: number;
     description: string;
 
-    constructor(name?, year?, description?) {
+    constructor(id?, name?, year?, description?) {
+        this.id = id;
         this.name = name;
         this.year = year;
         this.description = description;

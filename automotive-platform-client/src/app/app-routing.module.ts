@@ -6,9 +6,10 @@ import { CarsIndexComponent } from './cars/components/cars-index/cars-index.comp
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'cars', pathMatch: 'full'},
+  {path: '', redirectTo: 'cars',  pathMatch: 'full'},
   {path: 'cars', component: CarsComponent,
   children: [
+    { path: '', redirectTo: 'cars-index', pathMatch: 'full'  },
     { path: 'cars-index', component: CarsIndexComponent },
     { path: 'car-form/:id', component: CarFormComponent },
     { path: 'car-form', component: CarFormComponent }]}
