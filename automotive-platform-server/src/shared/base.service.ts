@@ -3,7 +3,7 @@ import { DocumentType, ReturnModelType } from '@typegoose/typegoose';
 import { AnyParamConstructor } from '@typegoose/typegoose/lib/types';
 import { MongoError } from 'mongodb';
 import { DocumentQuery, Types, Query } from 'mongoose';
-import { BaseModel } from '../models/base-model';
+import { BaseModel } from './base-model';
 
 
 type QueryList<T extends BaseModel> = DocumentQuery<

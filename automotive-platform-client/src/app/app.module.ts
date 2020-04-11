@@ -4,21 +4,20 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { CarFormComponent } from './cars/components/car-form/car-form.component';
-import { CarsComponent } from './cars/components/cars.component';
-import { CarsModule } from './cars/cars.module';
 import {InputTextModule} from 'primeng/inputtext';
-import { CarsIndexComponent } from './cars/components/cars-index/cars-index.component';
+import { CarTypesModule } from './car-types/car-types.module';
+import { CarsModule } from './cars/cars.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     CarsModule,
+    CarTypesModule,
     InputTextModule
   ],
   providers: [],

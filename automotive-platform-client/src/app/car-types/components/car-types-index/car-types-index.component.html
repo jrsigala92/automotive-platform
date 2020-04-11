@@ -1,0 +1,22 @@
+<div class="p-grid">
+    <div class="p-col">
+        <p-button label="New" [routerLink]="['/car-types/car-type-form']"></p-button>
+    </div>
+    <div class="p-grid">
+        <div class="p-col">
+            <p-table [value]="carTypes">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Name</th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-carType>
+                    <tr>
+                        <td [routerLink]="['/car-types/car-type-form/', carType._id]">{{carType.name}}</td>
+                        <td><button class="btn btn-secondary" (click)="onDeleteCar(carType._id)">Delete</button></td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>

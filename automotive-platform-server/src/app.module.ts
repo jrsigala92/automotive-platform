@@ -7,6 +7,7 @@ import { CarsModule } from './cars/cars.module';
 import {Typegoose} from 'typegoose'
 import { MongooseModule } from '@nestjs/mongoose';
 import { TypegooseModule } from 'nestjs-typegoose';
+import { CarTypesModule } from './car-types/car-types.module';
 
 @Module({
   imports: [
@@ -15,6 +16,8 @@ import { TypegooseModule } from 'nestjs-typegoose';
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }),
-    CarsModule]
+    CarsModule,
+    CarTypesModule
+  ]
 })
 export class AppModule {}
