@@ -9,12 +9,16 @@
                     <tr>
                         <th>Name</th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-carType>
                     <tr>
                         <td [routerLink]="['/car-types/car-type-form/', carType._id]">{{carType.name}}</td>
-                        <td><button class="btn btn-secondary" (click)="onDeleteCar(carType._id)">Delete</button></td>
+                        <td>{{carType._id}}</td>
+                        <td>
+                            <button (click)="onDeleteCarType(carType._id)" pButton type="button" class="ui-button-danger" icon="pi pi-times"></button>
+                        </td>
                     </tr>
                 </ng-template>
             </p-table>

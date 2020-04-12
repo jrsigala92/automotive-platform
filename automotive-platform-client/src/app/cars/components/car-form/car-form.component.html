@@ -1,17 +1,24 @@
 <span class="ui-float-label">
-    <input class="float-input" type="text" pInputText [(ngModel)]="car.name"> 
+    <input class="form-control float-input" type="text" pInputText [(ngModel)]="car.name"> 
     <label for="float-input">Name</label>
 </span>
 <span class="ui-float-label">
-    <input class="float-input" type="number" pInputText [(ngModel)]="car.year"> 
+    <input class="form-control float-input" type="number" pInputText [(ngModel)]="car.year"> 
     <label for="float-input">Year</label>
 </span>
 <span class="ui-float-label">
-    <input class="float-input" type="text" pInputText [(ngModel)]="car.description"> 
+    <input class="form-control float-input" type="text" pInputText [(ngModel)]="car.description"> 
     <label for="float-input">Description</label>
+</span>
+<span class="ui-float-label">
+    <select class="form-control float-input">
+        <option>Select Car Type</option>
+        <option value="carType.name" *ngFor="let carType of carTypes">{{carType.name}}</option>
+    </select>
 </span>
 <!-- <input type="text" pInputText [(ngModel)]="car.name" />
 <input type="text" pInputText [(ngModel)]="car.year" />
 <input type="text" pInputText [(ngModel)]="car.description" /> -->
-<button *ngIf="!carId" (click)="onCreate()">Go</button>
-<button *ngIf="carId" (click)="onUpdate()">Update</button>
+
+<p-button label="Save" *ngIf="!carId" (click)="onCreate()"></p-button>
+<p-button label="Update" *ngIf="carId" (click)="onUpdate()"></p-button>

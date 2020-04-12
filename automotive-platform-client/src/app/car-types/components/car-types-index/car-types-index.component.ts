@@ -23,7 +23,7 @@ export class CarTypesIndexComponent implements OnInit {
     });
   }
 
-  onDeleteCar(id: string) {
+  onDeleteCarType(id: string) {
     console.log(id);
     this.carsService.deleteCarType(id).subscribe();
     this.onGetCarTypes();

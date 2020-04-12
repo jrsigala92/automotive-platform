@@ -41,7 +41,7 @@ export class CarTypesController {
 
   @Delete('/delete/:id')
   async deleteCarType(@Res() res, @Param('id') id) {
-    const car = await this.carTypeService.delete(id);
+    const car = await this.carTypeService.deleteByIdAsync(id);
     if (!car) throw new NotFoundException('Car type does not exist');
     return res.status(HttpStatus.OK).json({
       message: 'Car type has been deleted',

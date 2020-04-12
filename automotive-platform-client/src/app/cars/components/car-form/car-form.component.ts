@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CarsService } from '../../cars.service';
 import { Car } from '../../car.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CarTypesService } from '../../../car-types/car-types.service';
+import { CarType } from '../../../car-types/car-type.model';
 
 
 @Component({
@@ -11,15 +13,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CarFormComponent implements OnInit {
   car: Car = new Car();
+  carTypes: CarType[];
   carId: string;
   constructor(
     private carsService: CarsService,
+    private carTypesService: CarTypesService,
     private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.carId = this.route.snapshot.paramMap.get('id');
-    console.log(this.carId);
+    this.onGetCarTypes();
     this.onGetCar(this.carId);
   }
 
@@ -35,6 +39,10 @@ export class CarFormComponent implements OnInit {
     this.carsService.updateCar(this.carId, this.car).subscribe();
     this.car = new Car();
     this.router.navigateByUrl('cars/cars-index');
+  }
+
+  async onGetCarTypes() {
+    await this.carTypesService.getCarTypes().subscribe(res => this.carTypes = res);
   }
 
   async onGetCar(id: string) {

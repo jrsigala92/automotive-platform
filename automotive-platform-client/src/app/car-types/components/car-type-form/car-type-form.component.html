@@ -2,5 +2,6 @@
     <input class="float-input" type="text" pInputText [(ngModel)]="carType.name"> 
     <label for="float-input">Name</label>
 </span>
-<button *ngIf="!carTypeId" (click)="onCreate()">Go</button>
-<button *ngIf="carTypeId" (click)="onUpdate()">Update</button>
+
+<p-button label="Save" *ngIf="!carTypeId" (click)="onCreate()"></p-button>
+<p-button label="Update" *ngIf="carTypeId" (click)="onUpdate()"></p-button>

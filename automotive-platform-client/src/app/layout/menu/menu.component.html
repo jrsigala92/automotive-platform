@@ -1,0 +1,18 @@
+<mat-toolbar>
+    <span>Automotive Platform</span>
+
+
+    <span class="example-fill-remaining-space">
+
+    </span>
+    <span>
+        <mat-menu #appMenu="matMenu">
+            <button mat-menu-item [routerLink]="['/cars/']">Cars</button>
+            <button mat-menu-item [routerLink]="['/car-types/']">Car Types</button>
+        </mat-menu>
+
+        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+    </span>
+</mat-toolbar>
